@@ -1,4 +1,82 @@
+**Инструкция по подготовке к запуску:**
 
+Датасет требуется скачать с сайта https://www.kaggle.com/datasets/cherngs/heart-disease-cleveland-uci
+После этого в директории configs требуется прописать новый путь до датасета для файлов **train_config.yml** и 
+**eval_config.yml**. 
+
+**Установка:**
+```
+python3 setup.py install
+python3 setup.py build
+```
+
+**Запуск:**
+```
+python model/train.py --conf <path_to_train_conf.yml>
+```
+
+По умолчанию подтягивается файл из configs/train_config.yml
+
+Информация по полям содержится в train_config.yml
+
+**Валидация:**
+```
+python model/train.py --conf <path_to_eval_conf.yml>
+```
+
+По умолчанию подтягивается файл из configs/eval_config.yml
+
+Информация по полям содержится в eval_config.yml
+
+**Структура проекта:**
+
+```bash
+
+.
+└── ml_project
+    ├── build # build directory
+    ├── configs # directory with configs
+    │   ├── eval_config.yml #eval config
+    │   └── train_config.yml #train config
+    ├── dataset
+    │   └── heart_cleveland_upload.csv #dataset
+    ├── dist
+    ├── __init__.py
+    ├── logs #logs directory (will be created after first launch)
+    │   ├── eval.log
+    │   └── train.log
+    ├── mlruns #directory with mlruns
+    ├── model 
+    │   ├── entities # 
+    │   │   ├── custom_exception_class.py #custom class exceptions
+    │   │   ├── feature_params.py #dataclass for features
+    │   │   ├── __init__.py
+    │   │   └── train_params.py #dataclass for train params
+    │   ├── eval.py #evaluation script
+    │   ├── __init__.py
+    │   ├── modules #main code modules
+    │   │   ├── __init__.py
+    │   │   ├── metrics.py #metric calculation
+    │   │   └── model.py #model module
+    │   ├── preprocessing
+    │   │   ├── data_load.py #data loading
+    │   │   ├── __init__.py
+    │   │   └── preprocessing.py #data preprocessing
+    │   ├── trained
+    │   │   └── model.pkl #example of saved model
+    │   └── train.py #train script
+    ├── notebooks #directory for notebooks
+    │   └── EDA.ipynb #EDA notebook
+    ├── Readme.md #Yeap, it's me
+    ├── requirements.txt 
+    ├── results #Directory with saved data
+    │   ├── result_2022-11-06_21.23.25.385471.csv
+    │   └── result_2022-11-06_21.24.24.491150.csv
+    ├── setup.py
+    └── tests #Directory with tests
+        ├── __init__.py
+        └── model_test.py
+```
 **Критерии (указаны максимальные баллы, по каждому критерию ревьюер может поставить баллы частично):**
 
 - [X] В описании к пулл реквесту описаны основные "архитектурные" и тактические решения, которые сделаны в вашей работе. В общем, описание того, что именно вы сделали и для чего, чтобы вашим ревьюерам было легче понять ваш код (1 балл)

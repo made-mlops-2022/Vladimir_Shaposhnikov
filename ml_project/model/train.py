@@ -48,7 +48,10 @@ def train_model(conf):
         return 1
 
     try:
-        model = get_model(data_conf, x_train, y_train)
+        model = get_model(data_conf, x_train, y_train,
+                          model_name=mod_conf['model_name'],
+                          best_finding=mod_conf['best_finding'])
+
         model_score = model.score(x_test, y_test)
         log_metric("model score", model_score)
         logger.info(f"Model get score - {model_score}")

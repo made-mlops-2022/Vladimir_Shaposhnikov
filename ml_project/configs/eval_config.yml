@@ -1,8 +1,12 @@
 path:
+  # Path to input data
   input_data_path: "/home/voland/Workspace/mlops_project/ml_project/dataset/heart_cleveland_upload.csv"
+  # Path to saved model after computing train.py
   model_path: "/home/voland/Workspace/mlops_project/ml_project/model/trained/model.pkl"
+  # The directory in which you want to save the data
   save_dir: "/home/voland/Workspace/mlops_project/ml_project/results"
 
 
 dataset:
+  # Which columns to discard from the dataset ([] if none)
   drop_columns: ['condition']
