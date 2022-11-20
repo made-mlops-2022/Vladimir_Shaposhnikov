@@ -1,0 +1,40 @@
+path:
+  # Path to input data
+  input_data_path: "/home/voland/Workspace/mlops_project/ml_project/dataset/heart_cleveland_upload.csv"
+  # Directory in which you want to save model
+  output_model_path: "/home/voland/Workspace/mlops_project/ml_project/model/trained/model.pkl"
+
+model:
+  # Size of test data
+  test_size: 0.2
+  # Random seed for train-test split
+  random_state: 42
+  # In shuffle needed in train-test split
+  shuffle: True
+  # Metric for calculation, variants - ['accuracy', 'precision', 'recall', 'roc_auc']
+  metric: 'roc_auc'
+  # Which model you want to use, variants - ['svc', 'knn', 'linear', 'naive']
+  model_name: 'svc'
+  # Ignore previous parameter and try to find best varient from upper list
+  best_finding: False
+
+feature_params:
+  # Categorial columns
+  categorial:
+    - 'sex'
+    - 'cp'
+    - 'fbs'
+    - 'restecg'
+    - 'exang'
+    - 'slope'
+    - 'ca'
+    - 'thal'
+  # Numerical columns
+  numerical:
+    - 'age'
+    - 'trestbps'
+    - 'chol'
+    - 'thalach'
+    - 'oldpeak'
+  # Target column
+  target: 'condition'
