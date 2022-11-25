@@ -3,6 +3,7 @@ import pickle
 
 import pandas as pd
 import uvicorn
+import gdown
 from fastapi import FastAPI
 
 import logging
@@ -56,8 +57,14 @@ def model_init():
         return 1
 
     try:
-        env_model = os.getenv('PATH_TO_MODEL')
-        model_path = env_model if env_model else config['path']['model_path']
+        if not os.getenv('GLINK_FILE'):
+            env_model = os.getenv('PATH_TO_MODEL')
+            model_path = env_model if env_model else config['path']['model_path']
+        else:
+            url = str(os.getenv('GLINK_FILE'))
+            model_path = './model.pkl'
+            gdown.download(id=url, output=model_path, quiet=False)
+
         with open(model_path, 'rb') as f:
             model = pickle.load(f)
     except Exception as err:
