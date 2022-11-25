@@ -1,3 +1,31 @@
+**Fastapi launch**
+
+***Using docker:***
+```
+docker build --tag volodimirich1/fast_api utils/.
+```
+or
+```
+docker pull volodimirich1/fast_api:latest
+```
+****Run:****
+```
+docker run -p 8000:8000 volodimirich1/fast_api  
+```
+****Requests and Tests:****
+```
+docker ps
+docker exec -it id /bin/bash
+pytest test_server.py
+python3 create_requests.py
+```
+
+Requests and tests also work outside the container:
+```
+python3 utils/create_request.py
+pytest utils/test_server.py
+```
+
 **Инструкция по подготовке к запуску:**
 
 Датасет требуется скачать с сайта https://www.kaggle.com/datasets/cherngs/heart-disease-cleveland-uci
