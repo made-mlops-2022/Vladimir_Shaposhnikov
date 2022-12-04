@@ -15,7 +15,7 @@ def wait_for_file(file_name):
 with DAG(
         dag_id="data_train",
         default_args=default_args,
-        schedule_interval="@daily",
+        schedule_interval="@weekly",
         tags=["Airflow"],
 ) as dag:
     data_preprocessing = PythonSensor(
