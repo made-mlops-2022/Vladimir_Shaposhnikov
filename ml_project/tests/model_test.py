@@ -41,7 +41,8 @@ class ModelTest(unittest.TestCase):
         config_files = glob.glob('configs/*')
         self.assertListEqual(sorted(config_files),
                              sorted(['configs/train_config.yml',
-                                     'configs/eval_config.yml']))
+                                     'configs/eval_config.yml',
+                                     'configs/api_config.yml']))
 
 
 if __name__ == '__main__':
